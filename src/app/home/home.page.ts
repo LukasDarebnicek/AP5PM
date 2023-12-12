@@ -91,4 +91,9 @@ export class HomePage {
   toggleHistory() {
     this.showHistory = !this.showHistory;
   }
+
+  onCityChange(event: any) {
+    // Handle the city change event (e.g., store the input or trigger suggestions)
+    // In this case, you can use it to fetch suggestions if needed.
+  }
 }

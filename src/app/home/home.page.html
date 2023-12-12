@@ -16,7 +16,8 @@
 
   <ion-searchbar
     [(ngModel)]="cityName"
-    (ngModelChange)="loadData()"
+    (ionChange)="onCityChange($event)"
+    (keyup.enter)="loadData()"
     placeholder="Search for city"
     class="searchbar"
     animated
@@ -28,8 +29,13 @@
     {{ showHistory ? 'Hide History' : 'Show History' }}
   </ion-button>
 
+  <!-- Toggle button for info page -->
+  <ion-button (click)="navigateToInfoPage()" class="toggleHistoryButton">
+    Info o aplikaci
+  </ion-button>
+
   <ion-list *ngIf="showHistory && savedCities.length > 0">
-    <ion-item *ngFor="let city of savedCities" (click)="selectCity(city)">
+    <ion-item *ngFor="let city of savedCities.slice().reverse()" (click)="selectCity(city)">
       {{ city }}
     </ion-item>
   </ion-list>
@@ -109,15 +115,14 @@
     </ion-card>
   </div>
 
-  <!-- Tlačítko pro navigaci na novou stránku na středu spodní části obrazovky -->
+  <!-- Tlačítko pro navigaci na novou stránku na středu spodní části obrazovky 
   <div style="position: fixed; bottom: 0; width: 100%; display: flex; justify-content: center;">
     <ion-card class="cardSytle">
       <ion-button (click)="navigateToInfoPage()">Info o aplikaci</ion-button>
     </ion-card>
-  </div>
+  </div>-->
 
   <div *ngIf="loading" class="NoData">
-    <!--<img src="../../assets/NoData.png"/>-->
     <span>Zatím jsme nenačetli žádná data, prosím, zadej do vyhledávání nějaké město.</span>
   </div>
 </ion-content>
