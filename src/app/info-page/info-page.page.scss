@@ -1,0 +1,23 @@
+.info-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #007bff; /* Modrá barva pro nadpisy */
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  .info-page-content {
+    background-color: #f4f4f4; /* Světle šedé pozadí pro obsah */
+    //background-image: url('tvoje-obrazkova-cesta.jpg'); /* Nahraď cestu k obrázku */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  

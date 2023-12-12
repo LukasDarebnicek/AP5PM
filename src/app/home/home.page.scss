@@ -25,3 +25,43 @@
 #container a {
   text-decoration: none;
 }
+.searchbar{
+  --ion-background-color:#3B7E88;
+  color: white;
+}
+
+.cardSytle{
+  border-radius: 20px;
+  --ion-background-color:#3B7E88;
+
+  span{
+    color: white;
+    font-weight: 300;
+  }
+
+  #temp{
+    font-weight: 300;
+    font-size: 4em;
+    margin: 5px;
+  }
+  #locationIcon{
+    color: #F6B844 ;
+  }
+
+  #date{
+    color: #F6B844;
+  }
+}
+
+.spanSytle{
+  color: white;
+  font-weight: 300;
+  font-size: 1.5em;
+}
+
+.noData{
+
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+}
