@@ -1,3 +1,5 @@
+<!-- home.page.html -->
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -11,12 +13,31 @@
   <div style="text-align: center; margin: 15px;">
     <ion-label style="font-weight: 400; font-size: 1.5em;">Weather Forecast</ion-label>
   </div>
-  <ion-searchbar [(ngModel)]="cityName" (ngModelChange)="loadData()" placeholder="Search for city" class="searchbar" animated></ion-searchbar>
+
+  <ion-searchbar
+    [(ngModel)]="cityName"
+    (ngModelChange)="loadData()"
+    placeholder="Search for city"
+    class="searchbar"
+    animated
+  >
+  </ion-searchbar>
+
+  <!-- Toggle button for history menu -->
+  <ion-button (click)="toggleHistory()" class="toggleHistoryButton">
+    {{ showHistory ? 'Hide History' : 'Show History' }}
+  </ion-button>
+
+  <ion-list *ngIf="showHistory && savedCities.length > 0">
+    <ion-item *ngFor="let city of savedCities" (click)="selectCity(city)">
+      {{ city }}
+    </ion-item>
+  </ion-list>
 
   <div *ngIf="!loading">
     <ion-card class="cardSytle" *ngIf="weatherTemp">
       <ion-item lines="none">
-        <p style="color: white; font-size: 1.5em;"  >Dnešní hlášení</p>
+        <p style="color: white; font-size: 1.5em;">Dnešní hlášení</p>
         <ion-label id="date" slot="end">{{ todayDate | date: 'EEE dd MM' }}</ion-label>
       </ion-item>
 
@@ -66,7 +87,7 @@
       <ion-list>
         <ion-item-group>
           <ion-item-divider>
-            <span class="spanSytle">Doplňující informace</span>
+            <span class="spanStyle">Doplňující informace</span>
           </ion-item-divider>
 
           <ion-item>
@@ -90,7 +111,7 @@
 
   <!-- Tlačítko pro navigaci na novou stránku na středu spodní části obrazovky -->
   <div style="position: fixed; bottom: 0; width: 100%; display: flex; justify-content: center;">
-    <ion-card class="cardSytle" *ngIf="!loading">
+    <ion-card class="cardSytle">
       <ion-button (click)="navigateToInfoPage()">Info o aplikaci</ion-button>
     </ion-card>
   </div>
