@@ -40,7 +40,7 @@ export class HomePage {
   name = '';
   loading = true;
 
-  constructor(public httpClient: HttpClient, private navCtrl: NavController) {}repo
+  constructor(public httpClient: HttpClient, private navCtrl: NavController) {}
 
   loadData() {
     this.loading = true;
@@ -80,4 +80,6 @@ export class HomePage {
     const date = new Date(timestamp * 1000);
     return date.toLocaleTimeString();
   }
+
+  
 }
