@@ -1,4 +1,3 @@
-<!-- home.page.html -->
 
 <ion-header [translucent]="true">
   <ion-toolbar>
@@ -9,9 +8,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true" [ngClass]="{ 'dark-mode': darkMode, 'light-mode': !darkMode }" class="ion-padding">
+  <!-- style="--ion-background-color: #000000 !important;">-->
   <div style="text-align: center; margin: 15px;">
-    <ion-label style="font-weight: 400; font-size: 1.5em;">Weather Forecast</ion-label>
+    <!--<ion-label style="font-weight: 400; font-size: 1.5em;">Weather Forecast</ion-label>-->
   </div>
 
   <ion-searchbar
@@ -27,6 +27,11 @@
   <!-- Toggle button for history menu -->
   <ion-button (click)="toggleHistory()" class="toggleHistoryButton">
     {{ showHistory ? 'Hide History' : 'Show History' }}
+  </ion-button>
+
+  <!-- Toggle button for dark mode -->
+  <ion-button (click)="toggleDarkMode()" class="toggleDarkModeButton">
+    {{ darkMode ? 'Light Mode' : 'Dark Mode' }}
   </ion-button>
 
   <!-- Toggle button for info page -->

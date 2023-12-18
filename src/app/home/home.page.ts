@@ -1,5 +1,3 @@
-// home.page.ts
-
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
@@ -36,13 +34,20 @@ interface WeatherData {
 export class HomePage {
   savedCities: string[] = [];
   showHistory = false;
+  darkMode = false; // Declare darkMode property
   cityName = '';
   weatherTemp: WeatherData | undefined;
   todayDate = new Date();
   weatherIcon: string | undefined;
   loading = true;
+  
 
-  constructor(public httpClient: HttpClient, private navCtrl: NavController) {}
+  constructor(public httpClient: HttpClient, private navCtrl: NavController) {
+    const storedCities = localStorage.getItem('savedCities');
+    if (storedCities) {
+      this.savedCities = JSON.parse(storedCities);
+    }
+  }
 
   loadData() {
     this.loading = true;
@@ -57,9 +62,9 @@ export class HomePage {
         this.weatherIcon = `https://openweathermap.org/img/wn/${this.weatherTemp.weather[0]?.icon}@2x.png`;
         this.loading = false;
 
-        // Přidat hledané město do historie
         if (this.cityName && !this.savedCities.includes(this.cityName)) {
           this.savedCities.push(this.cityName);
+          localStorage.setItem('savedCities', JSON.stringify(this.savedCities));
         }
       },
       (error) => {
@@ -93,7 +98,11 @@ export class HomePage {
   }
 
   onCityChange(event: any) {
-    // Handle the city change event (e.g., store the input or trigger suggestions)
-    // In this case, you can use it to fetch suggestions if needed.
+    // Implement this method if needed
   }
+
+  toggleDarkMode() {
+    this.darkMode = !this.darkMode;
+  }
+  
 }

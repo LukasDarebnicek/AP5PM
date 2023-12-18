@@ -65,3 +65,13 @@
   display: flex;
   justify-content: center;
 }
+
+.dark-mode {
+  --ion-background-color: #000000;
+  --ion-text-color: #ffffff;
+}
+
+.light-mode {
+  --ion-background-color: #ffffff;
+  --ion-text-color: #000000;
+}
